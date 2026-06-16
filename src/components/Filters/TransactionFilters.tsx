@@ -1,8 +1,10 @@
 import "./TransactionFilters.scss";
 import type { ChangeEvent } from "react";
 import type { FiltersProps } from "../../types/transaction";
+import { stringConstant } from "../../utils/stringFile";
 
 const TransactionFilters = ({ filters, setFilters }: FiltersProps) => {
+  const { allTypesLabel, incomeLabel, expenseLabel } = stringConstant;
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
@@ -33,9 +35,9 @@ const TransactionFilters = ({ filters, setFilters }: FiltersProps) => {
       />
 
       <select name="type" value={filters.type} onChange={handleChange}>
-        <option value="">All Types</option>
-        <option value="Income">Income</option>
-        <option value="Expense">Expense</option>
+        <option value="">{allTypesLabel}</option>
+        <option value="Income">{incomeLabel}</option>
+        <option value="Expense">{expenseLabel}</option>
       </select>
 
       <input

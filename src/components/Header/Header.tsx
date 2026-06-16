@@ -1,24 +1,30 @@
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
+import { stringConstant } from "../../utils/stringFile";
 
 const Header = () => {
+  const { appName, dashboardLabel, transactionLabel } = stringConstant;
   return (
     <header className="header">
-      <div className="logo">Expense Tracker</div>
+      <div className="logo">{appName}</div>
 
       <nav>
         <NavLink
           to="/"
-          className={({ isActive }) => (isActive ? "active" : "")}
+          className={({ isActive }) =>
+            isActive ? "active nav-link" : "nav-link"
+          }
         >
-          Dashboard
+          {dashboardLabel}
         </NavLink>
 
         <NavLink
           to="/transactions"
-          className={({ isActive }) => (isActive ? "active" : "")}
+          className={({ isActive }) =>
+            isActive ? "active nav-link" : "nav-link"
+          }
         >
-          Transactions
+          {transactionLabel}
         </NavLink>
       </nav>
     </header>

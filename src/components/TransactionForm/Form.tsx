@@ -7,17 +7,19 @@ import {
   updateTransaction,
 } from "../../redux/slices/transactionSlice";
 import type { TransactionFormProps } from "../../types/transaction";
+import { stringConstant } from "../../utils/stringFile";
 
 const Form = ({
   editingTransaction,
   setEditingTransaction,
 }: TransactionFormProps) => {
+  const { incomeLabel, expenseLabel } = stringConstant;
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState({
     title: "",
     amount: "",
     category: "",
-    type: "Expense",
+    type: expenseLabel,
     date: "",
   });
 
@@ -86,7 +88,7 @@ const Form = ({
       title: "",
       amount: "",
       category: "",
-      type: "Expense",
+      type: expenseLabel,
       date: "",
     });
   };
@@ -126,9 +128,9 @@ const Form = ({
         />
 
         <select name="type" value={formData.type} onChange={handleChange}>
-          <option value="Income">Income</option>
+          <option value="Income">{incomeLabel}</option>
 
-          <option value="Expense">Expense</option>
+          <option value="Expense">{expenseLabel}</option>
         </select>
       </div>
 
@@ -153,7 +155,7 @@ const Form = ({
                 title: "",
                 amount: "",
                 category: "",
-                type: "Expense",
+                type: expenseLabel,
                 date: "",
               });
             }}

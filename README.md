@@ -218,7 +218,7 @@ Basic client-side validation is implemented:
 
 ## Future Ongoing Improvements
 
-- Reuseable string values for JSX (string file) and SCSS (variable and color file)
+- Reuseable string values for SCSS (variable and color file)
 - Modal-based Add/Edit transaction form
 - Category management
 - Sorting by amount and date

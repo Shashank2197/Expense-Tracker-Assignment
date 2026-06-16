@@ -10,6 +10,7 @@ import {
 import "./MonthlyTrendChart.scss";
 import { Line } from "react-chartjs-2";
 import type { MonthlyTrendChartProps } from "../../types/transaction";
+import { stringConstant } from "../../utils/stringFile";
 
 ChartJS.register(
   CategoryScale,
@@ -21,6 +22,7 @@ ChartJS.register(
 );
 
 const MonthlyTrendChart = ({ transactions }: MonthlyTrendChartProps) => {
+  const { incomeLabel, expenseLabel, noTransactionAvailable } = stringConstant;
   const monthlyData: Record<
     string,
     {
@@ -42,7 +44,7 @@ const MonthlyTrendChart = ({ transactions }: MonthlyTrendChartProps) => {
       };
     }
 
-    if (transaction.type === "Income") {
+    if (transaction.type === incomeLabel) {
       monthlyData[month].income += transaction.amount;
     } else {
       monthlyData[month].expense += transaction.amount;
@@ -53,29 +55,19 @@ const MonthlyTrendChart = ({ transactions }: MonthlyTrendChartProps) => {
 
   const data = {
     labels,
-
     datasets: [
       {
-        label: "Income",
-
+        label: incomeLabel,
         data: labels.map((month) => monthlyData[month].income),
-
         borderColor: "#22C55E",
-
         backgroundColor: "rgba(34, 197, 94, 0.2)",
-
         tension: 0.3,
       },
-
       {
-        label: "Expense",
-
+        label: expenseLabel,
         data: labels.map((month) => monthlyData[month].expense),
-
         borderColor: "#EF4444",
-
         backgroundColor: "rgba(239, 68, 68, 0.2)",
-
         tension: 0.3,
       },
     ],
@@ -83,24 +75,20 @@ const MonthlyTrendChart = ({ transactions }: MonthlyTrendChartProps) => {
 
   const options = {
     responsive: true,
-
     maintainAspectRatio: false,
-
     plugins: {
       legend: {
         position: "top" as const,
       },
-
       title: {
         display: true,
-
         text: "Monthly Income vs Expense Trend",
       },
     },
   };
 
   if (transactions.length === 0) {
-    return <div className="empty-chart">No transaction data available</div>;
+    return <div className="empty-chart">{noTransactionAvailable}</div>;
   }
 
   return (

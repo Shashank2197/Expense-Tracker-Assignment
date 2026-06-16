@@ -2,12 +2,14 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import type { ExpensePieChartProps } from "../../types/transaction";
 import "./ExpensePieChart.scss";
+import { stringConstant } from "../../utils/stringFile";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const ExpensePieChart = ({ transactions }: ExpensePieChartProps) => {
+  const { expenseLabel, noTransactionAvailable } = stringConstant;
   const expenses = transactions.filter(
-    (transaction) => transaction.type === "Expense",
+    (transaction) => transaction.type === expenseLabel,
   );
 
   const categoryTotals: Record<string, number> = {};
@@ -61,7 +63,7 @@ const ExpensePieChart = ({ transactions }: ExpensePieChartProps) => {
   };
 
   if (expenses.length === 0) {
-    return <div className="empty-chart">No expense data available</div>;
+    return <div className="empty-chart">{noTransactionAvailable}</div>;
   }
 
   return (

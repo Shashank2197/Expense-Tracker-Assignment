@@ -3,18 +3,21 @@ import SummaryContainer from "../../components/SummaryContainer/SummaryContainer
 import ExpensePieChart from "../../components/Charts/ExpensePieChart";
 import MonthlyTrendChart from "../../components/Charts/MonthlyTrendChart";
 import { useAppSelector } from "../../redux/hooks";
+import { stringConstant } from "../../utils/stringFile";
 
 const Dashboard = () => {
+  const { incomeLabel, expenseLabel, dashboardHeading, dashboardSubHeading } =
+    stringConstant;
   const transactions = useAppSelector(
     (state) => state.transactions.transactions,
   );
 
   const totalIncome = transactions
-    .filter((transaction) => transaction.type === "Income")
+    .filter((transaction) => transaction.type === incomeLabel)
     .reduce((total, transaction) => total + transaction.amount, 0);
 
   const totalExpenses = transactions
-    .filter((transaction) => transaction.type === "Expense")
+    .filter((transaction) => transaction.type === expenseLabel)
     .reduce((total, transaction) => total + transaction.amount, 0);
 
   const currentBalance = totalIncome - totalExpenses;
@@ -23,8 +26,8 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <h1>Expense Tracker Dashboard</h1>
-      <p>Overview of your financial activities</p>
+      <h1>{dashboardHeading}</h1>
+      <h3>{dashboardSubHeading}</h3>
 
       <div className="cards">
         <SummaryContainer

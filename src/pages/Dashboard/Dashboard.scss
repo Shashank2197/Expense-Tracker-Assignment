@@ -1,9 +1,7 @@
 .dashboard {
   padding: 24px;
-
   display: flex;
   flex-direction: column;
-
   gap: 24px;
 }
 
@@ -11,7 +9,6 @@
   h1 {
     font-size: 2rem;
     font-weight: 700;
-
     margin-bottom: 8px;
   }
 
@@ -22,17 +19,13 @@
 
 .cards {
   display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
   gap: 20px;
 }
 
 .charts {
   display: grid;
-
   grid-template-columns: 1fr 2fr;
-
   gap: 20px;
 }
 

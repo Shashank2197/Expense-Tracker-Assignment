@@ -7,7 +7,6 @@
   overflow-x: auto;
 }
 
-/* TABLE */
 .transaction-table {
   width: 100%;
   border-collapse: collapse;
@@ -15,7 +14,6 @@
   table-layout: fixed;
 }
 
-/* HEADER */
 .transaction-table thead {
   background: #f5f6fa;
 }
@@ -29,7 +27,6 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
-/* ROWS */
 .transaction-table td {
   padding: 12px 10px;
   font-size: 14px;
@@ -40,12 +37,10 @@
   white-space: nowrap;
 }
 
-/* HOVER EFFECT */
 .transaction-table tbody tr:hover {
   background: #fafafa;
 }
 
-/* BADGES */
 .badge {
   padding: 4px 10px;
   border-radius: 20px;
@@ -65,7 +60,6 @@
   color: #c62828;
 }
 
-/* ACTION BUTTONS */
 .actions {
   display: flex;
   gap: 8px;
@@ -81,7 +75,6 @@
   transition: 0.2s ease;
 }
 
-/* EDIT */
 .edit-btn {
   background: #e3f2fd;
   color: #1976d2;
@@ -91,7 +84,6 @@
   background: #bbdefb;
 }
 
-/* DELETE */
 .delete-btn {
   background: #ffebee;
   color: #d32f2f;
@@ -101,7 +93,6 @@
   background: #ffcdd2;
 }
 
-/* EMPTY STATE */
 .empty-state {
   text-align: center;
   padding: 20px;
@@ -109,7 +100,6 @@
   font-style: italic;
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
   .transaction-table th,
   .transaction-table td {
