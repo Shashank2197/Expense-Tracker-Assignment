@@ -173,6 +173,12 @@ src
 
 ## Assumptions Made
 
+### Known Decisions
+
+- Table layout uses fixed column widths to prevent UI shifting caused by varying amount lengths.
+- Filtering is performed client-side on Redux state.
+- Edit functionality reuses the same form component for both create and update operations.
+
 ### Transaction IDs
 
 Transaction IDs are generated using:
