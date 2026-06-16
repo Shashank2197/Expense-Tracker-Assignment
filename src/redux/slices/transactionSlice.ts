@@ -1,14 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { Transaction } from "../../types/transaction";
+import type { Transaction, TransactionState } from "../../types/transaction";
 import { loadTransactions, saveTransactions } from "../../utils/localStorage";
 import { stringConstant } from "../../utils/stringFile";
 
 const { transactionLabel } = stringConstant;
-
-interface TransactionState {
-  transactions: Transaction[];
-}
 
 const initialState: TransactionState = {
   transactions: loadTransactions(),

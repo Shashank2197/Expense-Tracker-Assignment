@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from "react";
+
 export type TransactionType = "Income" | "Expense";
 
 export interface Transaction {
@@ -32,4 +34,25 @@ export interface TransactionFormProps {
   setEditingTransaction: React.Dispatch<
     React.SetStateAction<Transaction | null>
   >;
+}
+export interface ExpensePieChartProps {
+  transactions: Transaction[];
+}
+
+export interface MonthlyTrendChartProps {
+  transactions: Transaction[];
+}
+
+export interface FiltersProps {
+  filters: FilterState;
+  setFilters: Dispatch<SetStateAction<FilterState>>;
+}
+
+export interface TransactionTableProps {
+  filters: FilterState;
+  setEditingTransaction: (transaction: Transaction) => void;
+}
+
+export interface TransactionState {
+  transactions: Transaction[];
 }

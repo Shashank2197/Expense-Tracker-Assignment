@@ -2,7 +2,6 @@ import "./Dashboard.scss";
 import SummaryContainer from "../../components/SummaryContainer/SummaryContainer";
 import ExpensePieChart from "../../components/Charts/ExpensePieChart";
 import MonthlyTrendChart from "../../components/Charts/MonthlyTrendChart";
-
 import { useAppSelector } from "../../redux/hooks";
 
 const Dashboard = () => {

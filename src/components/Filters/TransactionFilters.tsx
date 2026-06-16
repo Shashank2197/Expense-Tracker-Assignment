@@ -1,11 +1,6 @@
 import "./TransactionFilters.scss";
-import type { ChangeEvent, Dispatch, SetStateAction } from "react";
-import type { FilterState } from "../../types/filter";
-
-interface FiltersProps {
-  filters: FilterState;
-  setFilters: Dispatch<SetStateAction<FilterState>>;
-}
+import type { ChangeEvent } from "react";
+import type { FiltersProps } from "../../types/transaction";
 
 const TransactionFilters = ({ filters, setFilters }: FiltersProps) => {
   const handleChange = (

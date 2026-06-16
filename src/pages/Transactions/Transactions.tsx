@@ -3,8 +3,7 @@ import "./Transactions.scss";
 import Form from "../../components/TransactionForm/Form";
 import TransactionFilters from "../../components/Filters/TransactionFilters";
 import TransactionTable from "../../components/TransactionTable/TransactionTable";
-import type { FilterState } from "../../types/filter";
-import type { Transaction } from "../../types/transaction";
+import type { Transaction, FilterState } from "../../types/transaction";
 
 const Transactions = () => {
   const [filters, setFilters] = useState<FilterState>({

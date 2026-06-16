@@ -9,7 +9,7 @@ import {
 } from "chart.js";
 import "./MonthlyTrendChart.scss";
 import { Line } from "react-chartjs-2";
-import type { Transaction } from "../../types/transaction";
+import type { MonthlyTrendChartProps } from "../../types/transaction";
 
 ChartJS.register(
   CategoryScale,
@@ -19,10 +19,6 @@ ChartJS.register(
   Tooltip,
   Legend,
 );
-
-interface MonthlyTrendChartProps {
-  transactions: Transaction[];
-}
 
 const MonthlyTrendChart = ({ transactions }: MonthlyTrendChartProps) => {
   const monthlyData: Record<

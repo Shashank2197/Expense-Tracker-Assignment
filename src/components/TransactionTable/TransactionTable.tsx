@@ -1,15 +1,7 @@
 import "./TransactionTable.scss";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { deleteTransaction } from "../../redux/slices/transactionSlice";
-import type { FilterState } from "../../types/filter";
-import type { Transaction } from "../../types/transaction";
-
-interface TransactionTableProps {
-  filters: FilterState;
-
-  // ✅ EDIT HANDLER FROM PARENT
-  setEditingTransaction: (transaction: Transaction) => void;
-}
+import type { TransactionTableProps } from "../../types/transaction";
 
 const TransactionTable = ({
   filters,
@@ -17,12 +9,10 @@ const TransactionTable = ({
 }: TransactionTableProps) => {
   const dispatch = useAppDispatch();
 
-  // ✅ SAFE STATE ACCESS
   const transactions = useAppSelector(
     (state) => state.transactions.transactions ?? [],
   );
 
-  // ✅ FILTER LOGIC
   const filteredTransactions = transactions.filter((transaction) => {
     const matchesSearch = transaction.title
       .toLowerCase()

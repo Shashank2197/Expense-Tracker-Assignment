@@ -118,7 +118,7 @@ src
 │       └── MonthlyTrendChart.scss
 │
 ├── app
-│   ├── store.ts
+│   └──── store.ts
 │
 ├── redux
 │   ├── hooks.ts
@@ -129,10 +129,10 @@ src
 │   └── localStorage.ts
 │   └── stringFiles.ts
 ├── types
-│   ├── transaction.ts
-│   └── filter.ts
+│   └── transaction.ts
 │
-├── styles
+│
+└──── styles
     ├── _variables.scss
     ├── _color.scss
     └── global.scss
@@ -223,5 +223,6 @@ Basic client-side validation is implemented:
 - Category management
 - Sorting by amount and date
 - Pagination
+- Toast Alert Notifications
 
 ---
