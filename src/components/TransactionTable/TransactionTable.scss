@@ -1,0 +1,124 @@
+.table-container {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
+}
+
+/* TABLE */
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  table-layout: fixed;
+}
+
+/* HEADER */
+.transaction-table thead {
+  background: #f5f6fa;
+}
+
+.transaction-table th {
+  text-align: left;
+  padding: 12px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* ROWS */
+.transaction-table td {
+  padding: 12px 10px;
+  font-size: 14px;
+  color: #444;
+  border-bottom: 1px solid #f0f0f0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* HOVER EFFECT */
+.transaction-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* BADGES */
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.badge.income {
+  background: #e6f9ee;
+  color: #1a7f37;
+}
+
+.badge.expense {
+  background: #fdeaea;
+  color: #c62828;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* EDIT */
+.edit-btn {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.edit-btn:hover {
+  background: #bbdefb;
+}
+
+/* DELETE */
+.delete-btn {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.delete-btn:hover {
+  background: #ffcdd2;
+}
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  font-style: italic;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .transaction-table th,
+  .transaction-table td {
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

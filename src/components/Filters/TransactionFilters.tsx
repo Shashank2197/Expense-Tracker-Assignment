@@ -1,4 +1,4 @@
-import "./Filters.scss";
+import "./TransactionFilters.scss";
 import type { ChangeEvent, Dispatch, SetStateAction } from "react";
 import type { FilterState } from "../../types/filter";
 
@@ -39,9 +39,7 @@ const TransactionFilters = ({ filters, setFilters }: FiltersProps) => {
 
       <select name="type" value={filters.type} onChange={handleChange}>
         <option value="">All Types</option>
-
         <option value="Income">Income</option>
-
         <option value="Expense">Expense</option>
       </select>
 

@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "./Form.scss";
 import type { ChangeEvent, FormEvent } from "react";
-import "./TransactionForm.scss";
-
 import { useAppDispatch } from "../../redux/hooks";
-import { addTransaction } from "../../redux/slices/transactionSlice";
+import {
+  addTransaction,
+  updateTransaction,
+} from "../../redux/slices/transactionSlice";
+import type { TransactionFormProps } from "../../types/transaction";
 
-const Form = () => {
+const Form = ({
+  editingTransaction,
+  setEditingTransaction,
+}: TransactionFormProps) => {
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState({
     title: "",
@@ -14,6 +20,18 @@ const Form = () => {
     type: "Expense",
     date: "",
   });
+
+  useEffect(() => {
+    if (editingTransaction) {
+      setFormData({
+        title: editingTransaction.title,
+        amount: editingTransaction.amount.toString(),
+        category: editingTransaction.category,
+        type: editingTransaction.type,
+        date: editingTransaction.date,
+      });
+    }
+  }, [editingTransaction]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -38,16 +56,31 @@ const Form = () => {
       return;
     }
 
-    dispatch(
-      addTransaction({
-        id: Date.now().toString(),
-        title: formData.title,
-        amount: Number(formData.amount),
-        category: formData.category,
-        type: formData.type as "Income" | "Expense",
-        date: formData.date,
-      }),
-    );
+    const transactionData = {
+      title: formData.title,
+      amount: Number(formData.amount),
+      category: formData.category,
+      type: formData.type as "Income" | "Expense",
+      date: formData.date,
+    };
+
+    if (editingTransaction) {
+      dispatch(
+        updateTransaction({
+          ...transactionData,
+          id: editingTransaction.id,
+        }),
+      );
+
+      setEditingTransaction(null);
+    } else {
+      dispatch(
+        addTransaction({
+          ...transactionData,
+          id: Date.now().toString(),
+        }),
+      );
+    }
 
     setFormData({
       title: "",
@@ -60,6 +93,11 @@ const Form = () => {
 
   return (
     <form className="transaction-form" onSubmit={handleSubmit}>
+      {editingTransaction && (
+        <div className="edit-banner">
+          Editing: <strong>{editingTransaction.title}</strong>
+        </div>
+      )}
       <div className="form-row">
         <input
           type="text"
@@ -94,7 +132,7 @@ const Form = () => {
         </select>
       </div>
 
-      <div className="form-row">
+      <div className="form-row date-row">
         <input
           type="date"
           name="date"
@@ -103,9 +141,31 @@ const Form = () => {
         />
       </div>
 
-      <button type="submit" className="primary-btn">
-        Add Transaction
-      </button>
+      <div className="form-actions">
+        {editingTransaction && (
+          <button
+            type="button"
+            className="cancel-btn"
+            onClick={() => {
+              setEditingTransaction(null);
+
+              setFormData({
+                title: "",
+                amount: "",
+                category: "",
+                type: "Expense",
+                date: "",
+              });
+            }}
+          >
+            Cancel
+          </button>
+        )}
+
+        <button type="submit" className="primary-btn">
+          {editingTransaction ? "Update Transaction" : "Add Transaction"}
+        </button>
+      </div>
     </form>
   );
 };

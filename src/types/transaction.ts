@@ -26,3 +26,10 @@ export interface SummaryCardProps {
   value: string;
   variant: "income" | "expense" | "balance" | "transactions";
 }
+
+export interface TransactionFormProps {
+  editingTransaction: Transaction | null;
+  setEditingTransaction: React.Dispatch<
+    React.SetStateAction<Transaction | null>
+  >;
+}
